@@ -1,0 +1,60 @@
+[build-system]
+requires = [
+    "setuptools >= 61.0",
+    "setuptools_scm>=8.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastapi-openid-connect"
+dynamic = [ "version" ]
+description = "Models and Types for implementing and integrating with Open ID Connect 1.0 providers in FastAPI"
+readme = "README.md"
+authors = [
+    {name = "ApeWorX LTD.", email = "admin@apeworx.io"},
+]
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+# NOTE: Hard pin all prod deps
+dependencies = [
+    "fastapi>=0.110",
+    "httpx",  # Peer of fastapi[all]
+    "python-jose",
+    "pydantic",  # Peer of fastapi
+]
+
+[project.optional-dependencies]
+lint = [
+    "ruff>=0.4.2",
+]
+test = [
+    "fastapi[all]",
+    "pytest",
+]
+release = [
+  "setuptools_scm",
+  "wheel",
+]
+dev = [
+    "ipython",
+    # NOTE: Put all other optionals you want to inherit here:
+    "fastapi-openid-connect[lint,test]",
+]
+
+[tools.setuptools]
+packages = [ "fastapi_openid_connect" ]
+
+[tool.setuptools_scm]
+
+[tool.ruff]
+line-length = 100
