@@ -32,9 +32,9 @@ class OpenIdConnect(_BaseOIDC):
     Example::
 
         >>> example_oidc = OpenIdConnect(baseUrl="https://example.com")
-        >>> @app.post("/auth")
-        ... def auth_with_example(token: dict = Depends(example_oidc)):
-        ...     user = db.add(User, id=token["sub"])
+        >>> @app.get("/auth")
+        ... def auth_callback_example(auth: AuthData = Depends(example_oidc)):
+        ...     user = db.add(User, id=auth.id_token["sub"])
     """
 
     def __init__(
