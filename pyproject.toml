@@ -27,15 +27,15 @@ classifiers = [
 
 # NOTE: Hard pin all prod deps
 dependencies = [
-    "fastapi>=0.110",
-    "httpx",  # Peer of fastapi[all]
-    "python-jose",
-    "pydantic",  # Peer of fastapi
+    "fastapi>=0.100",  # added pydantic v2
+    "httpx>=0.23",  # Peer of fastapi[all]
+    "python-jose[cryptography]>=3.3",
+    "pydantic>=2.1",  # Peer of fastapi
 ]
 
 [project.optional-dependencies]
 lint = [
-    "ruff>=0.4.2",
+    "ruff",
 ]
 test = [
     "fastapi[all]",
